@@ -127,28 +127,81 @@
             transform: rotate(90deg);
         }
         @media (max-width: 768px) {
+            .skills-grid {
+                margin-bottom: 32px;
+            }
             .skills-card {
                 min-height: auto;
+                gap: 14px;
+            }
+            .skills-card-copy {
+                font-size: 0.94rem;
+                line-height: 1.65;
             }
             .skills-overlay {
-                padding: 18px;
+                align-items: flex-start;
+                padding: 16px;
+                overflow-y: auto;
             }
             .skills-overlay-panel {
                 padding: 22px 18px 18px;
-                border-radius: 28px;
+                border-radius: 24px;
+                max-height: calc(100svh - 32px);
+                overflow-y: auto;
             }
             .skills-overlay-top {
                 align-items: flex-start;
                 padding-right: 58px;
+                margin-bottom: 18px;
+            }
+            .skills-overlay-title {
+                font-size: clamp(1.4rem, 8vw, 2rem);
+            }
+            .skills-overlay-copy {
+                margin-top: 10px;
+                font-size: 0.94rem;
+                line-height: 1.6;
             }
             .skills-overlay-close {
-                top: 18px;
-                right: 18px;
+                top: 16px;
+                right: 16px;
                 width: 40px;
                 height: 40px;
             }
             #skills-canvas {
-                height: 280px;
+                height: 260px;
+                border-radius: 24px;
+            }
+        }
+        @media (max-width: 560px) {
+            .skills-card h3 {
+                font-size: 1.22rem;
+            }
+            .skills-card-copy {
+                font-size: 0.9rem;
+            }
+            .skills-overlay {
+                padding: 12px;
+            }
+            .skills-overlay-panel {
+                padding: 18px 14px 14px;
+                border-radius: 20px;
+                max-height: calc(100svh - 24px);
+            }
+            .skills-overlay-top {
+                gap: 16px;
+                padding-right: 50px;
+            }
+            .skills-overlay-close {
+                width: 36px;
+                height: 36px;
+            }
+            .skills-overlay-close svg {
+                width: 16px;
+                height: 16px;
+            }
+            #skills-canvas {
+                height: 220px;
             }
         }
     </style>
