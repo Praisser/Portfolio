@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Mohammed Wasif Ahmed">
+    <title>Projects | Mohammed Wasif Ahmed</title>
+    <link rel="stylesheet" href="/src/style.css">
+    <style>
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        .project-card {
+            min-height: 420px;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(180deg, rgba(10,10,10,0) 50%, rgba(10,10,10,0.8) 100%), var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--bento-radius);
+            padding: 30px;
+            position: relative;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+        .tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="./" class="logo" aria-label="Go to home page">MOHAMMED WASIF AHMED</a>
+        <div class="nav-links">
+            <a href="./">Home</a>
+            <a href="./about.html">About</a>
+            <a href="./projects.html" class="active">Projects</a>
+            <a href="./education.html">Education</a>
+            <a href="./skills.html">Skills</a>
+            <a href="./certifications.html">Certifications</a>
+            <a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <canvas id="hero-canvas" class="live-bg-canvas"></canvas>
+        <header class="section-header reveal">
+            <h2>Projects I've Built</h2>
+            <p>A curated mix of systems, AI tools, automation workflows, and product experiments built across developer tooling, data, and user-facing apps.</p>
+        </header>
+
+        <div class="project-grid">
+            <a href="https://github.com/Praisser/Dsprout" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                <div class="project-tags">
+                    <span class="tag">Rust</span>
+                    <span class="tag">Next.js</span>
+                    <span class="tag">Distributed Systems</span>
+                </div>
+                <h3>DSprout</h3>
+                <p style="color: var(--text-secondary); margin-top: 10px;">A distributed storage platform with a Rust service layer, worker orchestration, file health dashboards, and a contributor control panel.</p>
+                <div style="margin-top: auto; padding-top: 20px;">
+                    <span class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; width: fit-content;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        View Repository
+                    </span>
+                </div>
+            </a>
+            <a href="https://github.com/Praisser/RepoSort" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                <div class="project-tags">
+                    <span class="tag">TypeScript</span>
+                    <span class="tag">AI Tooling</span>
+                    <span class="tag">Refactoring</span>
+                </div>
+                <h3>RepoSort</h3>
+                <p style="color: var(--text-secondary); margin-top: 10px;">An AI-powered repo cleanup system that turns messy codebases into clearer, safer, and more scalable software.</p>
+                <div style="margin-top: auto; padding-top: 20px;">
+                    <span class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; width: fit-content;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        View Repository
+                    </span>
+                </div>
+            </a>
+            <a href="https://github.com/Praisser/Daner" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                <div class="project-tags">
+                    <span class="tag">Tauri</span>
+                    <span class="tag">Svelte</span>
+                    <span class="tag">Python</span>
+                </div>
+                <h3>Daner</h3>
+                <p style="color: var(--text-secondary); margin-top: 10px;">An AI-powered desktop analyst cockpit for cleaning tabular, image, and audio data through a chat-first workflow.</p>
+                <div style="margin-top: auto; padding-top: 20px;">
+                    <span class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; width: fit-content;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        View Repository
+                    </span>
+                </div>
+            </a>
+            <a href="https://github.com/Praisser/Price-Tracker" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Automation</span>
+                    <span class="tag">Alerts</span>
+                </div>
+                <h3>Price Tracker</h3>
+                <p style="color: var(--text-secondary); margin-top: 10px;">A price monitoring tool focused on price history, alerting, and continuous tracking across shopping platforms.</p>
+                <div style="margin-top: auto; padding-top: 20px;">
+                    <span class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; width: fit-content;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        View Repository
+                    </span>
+                </div>
+            </a>
+            <a href="https://github.com/Praisser/TradeSense" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">PyQt5</span>
+                    <span class="tag">Trading</span>
+                </div>
+                <h3>TradeSense</h3>
+                <p style="color: var(--text-secondary); margin-top: 10px;">An intelligent MT5 trading assistant with AI signals, backtesting, alerts, and a desktop GUI for strategy workflows.</p>
+                <div style="margin-top: auto; padding-top: 20px;">
+                    <span class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; width: fit-content;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        View Repository
+                    </span>
+                </div>
+            </a>
+            <a href="https://github.com/Praisser/GetNak" target="_blank" rel="noopener noreferrer" class="project-card reveal">
+                <div class="project-tags">
+                    <span class="tag">HTML</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Platform</span>
+                </div>
+                <h3>GetNak</h3>
+                <p style="color: var(--text-secondary); margin-top: 10px;">A service-based web app for internal college use that helps students request, manage, and track assignment support.</p>
+                <div style="margin-top: auto; padding-top: 20px;">
+                    <span class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; width: fit-content;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        View Repository
+                    </span>
+                </div>
+            </a>
+        </div>
+
+        <footer class="reveal" style="padding: 40px 0;">
+            <div>© 2026 Wasif. All rights reserved.</div>
+            <ul class="social-list">
+                <li><a href="./">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Contact</a></li>
+            </ul>
+        </footer>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
