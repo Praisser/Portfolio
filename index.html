@@ -5,221 +5,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mohammed Wasif Ahmed">
-    <title>Mohammed Wasif Ahmed | Creative Developer</title>
+    <meta name="description" content="Single Origin — the portfolio of Mohammed Wasif Ahmed. AI/ML, systems, and clean interfaces, brewed in Hyderabad.">
+    <title>Single Origin | Mohammed Wasif Ahmed</title>
+    <script>
+        try { document.documentElement.dataset.roast = localStorage.getItem('so-roast') || 'light'; }
+        catch (e) { document.documentElement.dataset.roast = 'light'; }
+    </script>
     <link rel="stylesheet" href="/src/style.css">
 </head>
 
 <body>
-    <nav>
-        <a href="./" class="logo" aria-label="Go to home page">MOHAMMED WASIF AHMED</a>
-        <div class="nav-links">
-            <a href="./" class="active">Home</a>
-            <a href="./about.html">About</a>
-            <a href="./projects.html">Projects</a>
-            <a href="./education.html">Education</a>
-            <a href="./skills.html">Skills</a>
-            <a href="./certifications.html">Certifications</a>
-            <a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Contact</a>
-        </div>
-    </nav>
+    <header class="so-header">
+        <a href="./" class="so-brand" aria-label="Single Origin — home">
+            <span class="so-brand-dot" aria-hidden="true"></span>
+            <span class="so-brand-name">Single&nbsp;Origin</span>
+            <span class="so-brand-est">Est.&nbsp;2026</span>
+        </a>
+        <nav class="so-nav">
+            <div class="so-navlinks" id="so-navlinks" data-open="false">
+                <a href="./">The&nbsp;Label</a>
+                <a href="./about.html">Tasting&nbsp;Notes</a>
+                <a href="./projects.html">The&nbsp;Menu</a>
+                <a href="./education.html">Roast&nbsp;Curve</a>
+                <a href="./skills.html">Recipe</a>
+                <a href="./certifications.html">Passport</a>
+                <a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Order</a>
+            </div>
+            <div class="so-roast-toggle" data-roast-toggle title="Toggle roast" role="button" tabindex="0" aria-label="Toggle light or dark roast">
+                <span class="so-seg" data-seg="light">Light&nbsp;Roast</span>
+                <span class="so-seg" data-seg="dark">Dark&nbsp;Roast</span>
+            </div>
+            <button class="so-burger" id="so-burger" type="button" data-menu-toggle aria-label="Menu">☰</button>
+        </nav>
+    </header>
 
     <main>
-        <section class="hero">
-            <canvas id="hero-canvas" class="live-bg-canvas"></canvas>
-            
-            <!-- Space, Racing & Mythical Elements -->
-            <div class="space-structure">
-                <!-- Rockets -->
-                <div class="floating-rocket home-draggable" data-home-draggable style="top: 15%; left: 10%;">
-                    <div class="floating-rocket-visual">
-                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--accent-primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.5-1 1-4c1.5 0 3 .5 3 .5L12 11"></path><path d="M15 12v5c0 3-1 4-4 5.5-.5-1-1-3-1-3l3.5-3.5"></path></svg>
+        <!-- THE LABEL -->
+        <section class="so-section so-section--hero" aria-label="Home — The Label">
+            <div class="so-hero-grid">
+                <div class="so-label-face">
+                    <div class="so-overline">
+                        <span class="so-overline-tag">Single&nbsp;Origin</span>
+                        <span class="so-overline-rule"></span>
+                        <span class="so-overline-no">N°&nbsp;01</span>
+                    </div>
+                    <h1 class="so-title">Mohammed<br>Wasif&nbsp;Ahmed</h1>
+                    <p class="so-tagline">Extracted, not assumed.</p>
+                    <p class="so-lede">
+                        Third-year CS&amp;E (AI/ML). I build systems the way I brew — controlled
+                        variables, a repeatable process, sensitive to small inputs. Nothing bitter ships.
+                    </p>
+                    <div class="so-cta-row">
+                        <a href="./projects.html" class="so-btn">View&nbsp;the&nbsp;Menu&nbsp;↓</a>
+                        <a href="#contact-modal" data-contact-modal aria-haspopup="dialog" class="so-btn so-btn-ghost">Place&nbsp;an&nbsp;Order</a>
                     </div>
                 </div>
 
-                <!-- Mythical Planet with Rings -->
-                <div class="myth-planet home-draggable" data-home-draggable style="top: 10%; right: 15%;">
-                    <div class="myth-planet-visual">
-                        <svg width="120" height="120" viewBox="0 0 100 100">
-                            <defs>
-                                <radialGradient id="planetGrad" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" style="stop-color:var(--accent-secondary);stop-opacity:0.4" />
-                                    <stop offset="100%" style="stop-color:transparent;stop-opacity:0" />
-                                </radialGradient>
-                            </defs>
-                            <ellipse cx="50" cy="50" rx="45" ry="15" stroke="var(--accent-primary)" stroke-width="0.5" fill="none" transform="rotate(-20 50 50)" opacity="0.5" />
-                            <circle cx="50" cy="50" r="20" fill="url(#planetGrad)" stroke="var(--accent-primary)" stroke-width="1" />
-                            <circle cx="40" cy="45" r="3" fill="white" opacity="0.3" />
-                        </svg>
+                <!-- Spec sheet / side of the bag -->
+                <aside class="so-card so-spec">
+                    <div class="so-spec-head">
+                        <span>Spec&nbsp;Sheet</span><span>Filter&nbsp;Roast</span>
                     </div>
-                </div>
-
-                <!-- Futuristic Spaceship (Floating) -->
-                <div class="myth-ship home-draggable" data-home-draggable style="bottom: 20%; left: 5%;">
-                    <div class="myth-ship-visual">
-                        <svg width="100" height="60" viewBox="0 0 100 60" fill="none">
-                            <path d="M10 30L50 10L90 30L50 50L10 30Z" stroke="var(--accent-secondary)" stroke-width="1" fill="rgba(99, 102, 241, 0.1)"/>
-                            <path d="M30 30L50 20L70 30L50 40L30 30Z" fill="var(--accent-primary)" opacity="0.5"/>
-                            <circle cx="50" cy="30" r="2" fill="white">
-                                <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
-                            </circle>
-                        </svg>
+                    <div class="so-spec-rows">
+                        <div class="so-spec-row">
+                            <span class="so-spec-key">Origin</span>
+                            <span class="so-spec-val">Hyderabad,&nbsp;India</span>
+                        </div>
+                        <div class="so-spec-row">
+                            <span class="so-spec-key">Notes</span>
+                            <span class="so-spec-val">AI/ML · Systems · Clean&nbsp;Interfaces</span>
+                        </div>
+                        <div class="so-spec-row">
+                            <span class="so-spec-key">Process</span>
+                            <span class="so-spec-val">Washed,&nbsp;not&nbsp;rushed</span>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Small Glowing Orbs (Moons/Stuff) -->
-                <div class="orb" style="top: 40%; right: 5%; width: 10px; height: 10px; background: var(--accent-primary); border-radius: 50%; filter: blur(4px); animation: pulse 4s infinite;"></div>
-                <div class="orb" style="bottom: 10%; right: 25%; width: 15px; height: 15px; background: var(--accent-secondary); border-radius: 50%; filter: blur(6px); animation: pulse 6s infinite 1s;"></div>
-
-                <!-- F1 Cars Racing By -->
-                <div class="f1-car car-1">
-                    <svg width="80" height="30" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 30L5 25H95L90 30H10Z" fill="var(--accent-primary)" opacity="0.8"/>
-                        <rect x="20" y="20" width="40" height="10" rx="2" fill="var(--accent-primary)"/>
-                        <rect x="65" y="15" width="20" height="15" rx="1" fill="white" opacity="0.5"/>
-                        <circle cx="25" cy="32" r="6" fill="#111" stroke="var(--accent-primary)" stroke-width="2"/>
-                        <circle cx="75" cy="32" r="6" fill="#111" stroke="var(--accent-primary)" stroke-width="2"/>
-                    </svg>
-                </div>
-                <div class="f1-car car-2">
-                    <svg width="60" height="25" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 30L5 25H95L90 30H10Z" fill="var(--accent-secondary)" opacity="0.8"/>
-                        <rect x="25" y="22" width="30" height="8" rx="2" fill="var(--accent-secondary)"/>
-                        <circle cx="28" cy="32" r="5" fill="#111" stroke="var(--accent-secondary)" stroke-width="2"/>
-                        <circle cx="72" cy="32" r="5" fill="#111" stroke="var(--accent-secondary)" stroke-width="2"/>
-                    </svg>
-                </div>
-
-                <!-- Other elements -->
-                <div class="space-circle" style="top: 15%; right: 20%; width: 100px; height: 100px; border: 1px dashed var(--glass-border); border-radius: 50%; animation: rotate 20s linear infinite;"></div>
-                <div class="space-circle" style="bottom: 15%; left: 10%; width: 150px; height: 150px; border: 1px dashed var(--glass-border); border-radius: 50%; animation: rotate 30s linear reverse infinite;"></div>
+                    <div class="so-brewing">
+                        <div class="so-brewing-label">
+                            <span class="so-brew-dot" aria-hidden="true"><span></span><span></span></span>
+                            Currently&nbsp;Brewing
+                        </div>
+                        <div class="so-brewing-value">V60 · Ethiopian&nbsp;Yirgacheffe · 1:16</div>
+                    </div>
+                </aside>
             </div>
-
-            <div class="container" style="position: relative; z-index: 1;">
-                <h1 class="reveal">
-                    <span class="hero-name-word home-draggable" data-home-draggable style="background: linear-gradient(to right bottom, #9B8074, #735d52); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">MOHAMMED</span><br>
-                    <span class="hero-name-word home-draggable" data-home-draggable style="background: linear-gradient(to right bottom, #735d52, #47362e); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">WASIF</span><br>
-                    <span class="hero-name-word home-draggable" data-home-draggable style="background: linear-gradient(to right bottom, #47362e, #1F140D); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">AHMED</span>
-                </h1>
-                <p class="reveal hero-tagline" data-text="From idea to interface, I build things that land." style="color: var(--text-secondary); max-width: 500px; margin: 0 auto 30px;">
-                    From idea to interface, I build things that land.
-                </p>
-                </div>
         </section>
 
-        <style>
-            .space-structure {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-                overflow: hidden;
-            }
-            .floating-rocket {
-                position: absolute;
-                filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));
-            }
-            .floating-rocket-visual {
-                animation: float 6s ease-in-out infinite;
-            }
-            @keyframes float {
-                0%, 100% { transform: translateY(0) rotate(5deg); }
-                50% { transform: translateY(-30px) rotate(-5deg); }
-            }
-            @keyframes rotate {
-                from { transform: rotate(0deg); }
-                to { transform: rotate(360deg); }
-            }
-            .space-circle {
-                position: absolute;
-                opacity: 0.3;
-            }
-            .f1-car {
-                position: absolute;
-                z-index: 1;
-                filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
-            }
-            .car-1 {
-                top: 40%;
-                left: -100px;
-                animation: race-by 4s linear infinite;
-            }
-            .car-2 {
-                top: 60%;
-                right: -100px;
-                animation: race-by-reverse 5s linear infinite 2s;
-            }
-            @keyframes race-by {
-                0% { left: -150px; transform: scale(0.8) skewX(10deg); }
-                50% { transform: scale(1.1) skewX(0deg); }
-                100% { left: 110%; transform: scale(0.8) skewX(-10deg); }
-            }
-            @keyframes race-by-reverse {
-                0% { right: -150px; transform: scale(0.8) skewX(-10deg) rotateY(180deg); }
-                50% { transform: scale(1.1) skewX(0deg) rotateY(180deg); }
-                100% { right: 110%; transform: scale(0.8) skewX(10deg) rotateY(180deg); }
-            }
-            .myth-planet {
-                position: absolute;
-                z-index: 1;
-            }
-            .myth-planet-visual {
-                animation: myth-float 10s ease-in-out infinite;
-            }
-            .myth-ship {
-                position: absolute;
-                z-index: 1;
-                filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.4));
-            }
-            .myth-ship-visual {
-                animation: myth-float 8s ease-in-out infinite reverse;
-            }
-            .orb {
-                position: absolute;
-                z-index: 0;
-            }
-            @keyframes myth-float {
-                0%, 100% { transform: translate(0, 0) rotate(0deg); }
-                33% { transform: translate(20px, -30px) rotate(5deg); }
-                66% { transform: translate(-15px, 20px) rotate(-5deg); }
-            }
-            @keyframes pulse {
-                0%, 100% { opacity: 0.3; transform: scale(1); }
-                50% { opacity: 0.8; transform: scale(1.2); }
-            }
-        </style>
-
-
-
-        <footer class="container reveal" style="padding: 40px 20px;">
-            <div>© 2026 Wasif. All rights reserved.</div>
-            <ul class="social-list">
-                <li><a href="https://linkedin.com/in/praisser" target="_blank" rel="noopener noreferrer" title="LinkedIn"><svg
-                            width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
-                            </path>
-                            <rect x="2" y="9" width="4" height="12"></rect>
-                            <circle cx="4" cy="4" r="2"></circle>
-                        </svg></a></li>
-                <li><a href="https://github.com/Praisser" target="_blank" rel="noopener noreferrer" title="GitHub"><svg width="20"
-                            height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-                            </path>
-                        </svg></a></li>
-                <li><a href="mailto:mhmmdwasifahmed@gmail.com" title="Email"><svg width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
-                            </path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg></a></li>
-            </ul>
-        </footer>
+        <!-- POUR DIVIDER -->
+        <div class="so-pour" data-reveal>
+            <div class="so-pour-label">
+                <span>Drawdown</span><span>Keep&nbsp;scrolling&nbsp;·&nbsp;Tasting&nbsp;Notes&nbsp;↓</span>
+            </div>
+            <div class="so-pour-track">
+                <div class="so-pour-line" data-pour></div>
+                <span class="so-pour-ring"></span>
+            </div>
+        </div>
     </main>
+
+    <footer class="so-footer">
+        <span>© 2026 Wasif.</span>
+        <div class="so-footer-links">
+            <a href="https://github.com/Praisser" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/praisser" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="#contact-modal" data-contact-modal>Order</a>
+        </div>
+        <span>Designed &amp; brewed in Hyderabad.</span>
+    </footer>
 
     <script type="module" src="/src/main.js"></script>
 </body>

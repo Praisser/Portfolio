@@ -1,88 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mohammed Wasif Ahmed">
-    <title>Education | Mohammed Wasif Ahmed</title>
+    <title>The Roast Curve | Mohammed Wasif Ahmed</title>
+    <script>
+        try { document.documentElement.dataset.roast = localStorage.getItem('so-roast') || 'light'; }
+        catch (e) { document.documentElement.dataset.roast = 'light'; }
+    </script>
     <link rel="stylesheet" href="/src/style.css">
 </head>
+
 <body>
-    <nav>
-        <a href="./" class="logo" aria-label="Go to home page">MOHAMMED WASIF AHMED</a>
-        <div class="nav-links">
-            <a href="./">Home</a>
-            <a href="./about.html">About</a>
-            <a href="./projects.html">Projects</a>
-            <a href="./education.html" class="active">Education</a>
-            <a href="./skills.html">Skills</a>
-            <a href="./certifications.html">Certifications</a>
-            <a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Contact</a>
+    <header class="so-header">
+        <a href="./" class="so-brand" aria-label="Single Origin — home">
+            <span class="so-brand-dot" aria-hidden="true"></span>
+            <span class="so-brand-name">Single&nbsp;Origin</span>
+            <span class="so-brand-est">Est.&nbsp;2026</span>
+        </a>
+        <nav class="so-nav">
+            <div class="so-navlinks" id="so-navlinks" data-open="false">
+                <a href="./">The&nbsp;Label</a>
+                <a href="./about.html">Tasting&nbsp;Notes</a>
+                <a href="./projects.html">The&nbsp;Menu</a>
+                <a href="./education.html">Roast&nbsp;Curve</a>
+                <a href="./skills.html">Recipe</a>
+                <a href="./certifications.html">Passport</a>
+                <a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Order</a>
+            </div>
+            <div class="so-roast-toggle" data-roast-toggle title="Toggle roast" role="button" tabindex="0" aria-label="Toggle light or dark roast">
+                <span class="so-seg" data-seg="light">Light&nbsp;Roast</span>
+                <span class="so-seg" data-seg="dark">Dark&nbsp;Roast</span>
+            </div>
+            <button class="so-burger" id="so-burger" type="button" data-menu-toggle aria-label="Menu">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="so-section" aria-label="Education — The Roast Curve">
+            <div class="so-section-head" data-reveal>
+                <span class="so-eyebrow">The&nbsp;Roast&nbsp;Curve</span>
+                <h2 class="so-h2">Education</h2>
+            </div>
+
+            <div class="so-card so-roast-card" data-reveal>
+                <!-- Chart -->
+                <div class="so-roast-chart">
+                    <div class="so-roast-chart-label">Development&nbsp;Temp&nbsp;↑&nbsp;·&nbsp;Time&nbsp;→</div>
+                    <svg viewBox="0 0 640 300" width="100%" style="display:block; overflow:visible;" role="img" aria-label="Roast curve charting academic progression from enrolment to drop">
+                        <line x1="60" y1="20" x2="60" y2="262" stroke="var(--line)" stroke-width="1"></line>
+                        <line x1="60" y1="262" x2="620" y2="262" stroke="var(--line)" stroke-width="1"></line>
+                        <line x1="200" y1="20" x2="200" y2="262" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"></line>
+                        <line x1="340" y1="20" x2="340" y2="262" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"></line>
+                        <line x1="480" y1="20" x2="480" y2="262" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"></line>
+                        <path d="M60,238 C95,250 130,232 180,205 C240,172 300,150 380,120 C450,95 530,82 600,72 L600,262 L60,262 Z" fill="var(--accent)" fill-opacity="0.08" stroke="none"></path>
+                        <path data-draw d="M60,238 C95,250 130,232 180,205 C240,172 300,150 380,120 C450,95 530,82 600,72" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"></path>
+                        <line x1="455" y1="60" x2="455" y2="262" stroke="var(--bloom)" stroke-width="1" stroke-dasharray="3 4"></line>
+                        <circle cx="60" cy="238" r="4" fill="var(--bg)" stroke="var(--accent)" stroke-width="2"></circle>
+                        <circle cx="455" cy="100" r="4.5" fill="var(--bloom)"></circle>
+                        <circle cx="600" cy="72" r="4" fill="var(--accent)"></circle>
+                        <text x="60" y="280" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="11" text-anchor="middle">2023</text>
+                        <text x="200" y="280" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="11" text-anchor="middle">2024</text>
+                        <text x="340" y="280" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="11" text-anchor="middle">2025</text>
+                        <text x="480" y="280" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="11" text-anchor="middle">2026</text>
+                        <text x="600" y="280" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="11" text-anchor="middle">2027</text>
+                        <text x="64" y="232" fill="var(--muted)" font-family="'IBM Plex Mono',monospace" font-size="10">ENROLLED</text>
+                        <text x="455" y="50" fill="var(--bloom)" font-family="'IBM Plex Mono',monospace" font-size="10" text-anchor="middle">FIRST CRACK · AI/ML</text>
+                        <text x="600" y="62" fill="var(--ink)" font-family="'IBM Plex Mono',monospace" font-size="10" text-anchor="end">DROP</text>
+                    </svg>
+                </div>
+
+                <!-- Details -->
+                <div class="so-roast-details">
+                    <div>
+                        <div class="so-roast-row">
+                            <div class="so-roast-row-key">Institution</div>
+                            <div class="so-roast-row-val">CVR&nbsp;College&nbsp;of&nbsp;Engineering</div>
+                        </div>
+                        <div class="so-roast-row">
+                            <div class="so-roast-row-key">Program</div>
+                            <div class="so-roast-row-val">B.Tech — CSE (AI &amp; ML)</div>
+                        </div>
+                        <div class="so-roast-row">
+                            <div class="so-roast-row-key">Location · Years</div>
+                            <div class="so-roast-row-val">Hyderabad, India · 2023—2027</div>
+                        </div>
+                    </div>
+                    <div class="so-roast-level">
+                        <div class="so-roast-level-label">Roast&nbsp;Level&nbsp;·&nbsp;Agtron</div>
+                        <div class="so-roast-level-value">8.26<span>&nbsp;/&nbsp;10</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prior lots (earlier education) -->
+            <div class="so-prior">
+                <div class="so-card so-prior-card" data-reveal>
+                    <div class="so-prior-date">2021 — 2023 · Green&nbsp;Coffee</div>
+                    <h3 class="so-prior-title">Grade&nbsp;12</h3>
+                    <div class="so-prior-meta"><span>TSBIE</span><span class="so-prior-score">97.5%</span></div>
+                </div>
+                <div class="so-card so-prior-card" data-reveal>
+                    <div class="so-prior-date">2020 — 2021 · First&nbsp;Sourcing</div>
+                    <h3 class="so-prior-title">Grade&nbsp;10</h3>
+                    <div class="so-prior-meta"><span>CBSE</span><span class="so-prior-score">94.6%</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- POUR DIVIDER -->
+        <div class="so-pour" data-reveal>
+            <div class="so-pour-label">
+                <span>The&nbsp;Recipe</span><span>Skills&nbsp;↓</span>
+            </div>
+            <div class="so-pour-track">
+                <div class="so-pour-line" data-pour></div>
+                <span class="so-pour-ring"></span>
+            </div>
         </div>
-    </nav>
-
-    <main class="container">
-        <canvas id="hero-canvas" class="live-bg-canvas"></canvas>
-        <header class="section-header reveal education-header">
-            <h2>Academic Progression</h2>
-            <p>A concise view of the academic path shaping my current direction in AI, machine learning, and disciplined problem-solving.</p>
-        </header>
-
-        <div class="education-timeline">
-            <article class="education-item reveal">
-                <span class="education-marker" aria-hidden="true">
-                    <span class="education-dot"></span>
-                </span>
-                <div class="education-panel">
-                    <div class="education-date">2023 - 2027</div>
-                    <h3>B.Tech in CSE (AI&amp;ML)</h3>
-                    <div class="education-meta">
-                        <span class="education-meta-main">CVR College of Engineering</span>
-                        <span class="education-meta-score">8.3 CGPA</span>
-                    </div>
-                    <p class="education-copy">Strengthening my foundation in machine learning, software engineering, and practical problem-solving.</p>
-                </div>
-            </article>
-            <article class="education-item reveal">
-                <span class="education-marker" aria-hidden="true">
-                    <span class="education-dot"></span>
-                </span>
-                <div class="education-panel">
-                    <div class="education-date">2021 - 2023</div>
-                    <h3>Grade 12</h3>
-                    <div class="education-meta">
-                        <span class="education-meta-main">TSBIE</span>
-                        <span class="education-meta-score">97.5%</span>
-                    </div>
-                    <p class="education-copy">Delivered consistently strong performance while sharpening discipline, focus, and analytical clarity.</p>
-                </div>
-            </article>
-            <article class="education-item reveal">
-                <span class="education-marker" aria-hidden="true">
-                    <span class="education-dot"></span>
-                </span>
-                <div class="education-panel">
-                    <div class="education-date">2020 - 2021</div>
-                    <h3>Grade 10</h3>
-                    <div class="education-meta">
-                        <span class="education-meta-main">CBSE</span>
-                        <span class="education-meta-score">94.6%</span>
-                    </div>
-                    <p class="education-copy">Built strong core fundamentals early through consistent performance across essential subjects.</p>
-                </div>
-            </article>
-        </div>
-
-        <footer class="reveal" style="padding: 40px 0;">
-            <div>© 2026 Wasif. All rights reserved.</div>
-            <ul class="social-list">
-                <li><a href="./">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Contact</a></li>
-            </ul>
-        </footer>
     </main>
+
+    <footer class="so-footer">
+        <span>© 2026 Wasif.</span>
+        <div class="so-footer-links">
+            <a href="https://github.com/Praisser" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/praisser" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="#contact-modal" data-contact-modal>Order</a>
+        </div>
+        <span>Designed &amp; brewed in Hyderabad.</span>
+    </footer>
 
     <script type="module" src="/src/main.js"></script>
 </body>
+
 </html>

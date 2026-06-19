@@ -1,294 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mohammed Wasif Ahmed">
-    <title>Skills | Mohammed Wasif Ahmed</title>
+    <title>The Recipe | Mohammed Wasif Ahmed</title>
+    <script>
+        try { document.documentElement.dataset.roast = localStorage.getItem('so-roast') || 'light'; }
+        catch (e) { document.documentElement.dataset.roast = 'light'; }
+    </script>
     <link rel="stylesheet" href="/src/style.css">
-    <style>
-        #skills-canvas {
-            width: 100%;
-            height: 320px;
-            background:
-                radial-gradient(circle at top right, rgba(255, 87, 34, 0.16), transparent 30%),
-                linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow:
-                inset 0 1px 0 rgba(255, 255, 255, 0.05),
-                0 18px 40px rgba(0, 0, 0, 0.25);
-        }
-        .skills-grid {
-            margin-bottom: 42px;
-        }
-        .skills-card {
-            cursor: pointer;
-            min-height: 168px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 18px;
-        }
-        .skills-card-copy {
-            color: var(--text-secondary);
-            line-height: 1.75;
-        }
-        .skills-card.is-selected {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 30px rgba(255, 87, 34, 0.2);
-        }
-        .skills-card:focus-visible {
-            outline: 2px solid rgba(255, 87, 34, 0.4);
-            outline-offset: 4px;
-        }
-        .skills-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 2100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            visibility: hidden;
-            background: transparent;
-            backdrop-filter: none;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease, visibility 0.35s ease;
-        }
-        .skills-overlay.active {
-            visibility: visible;
-            background: rgba(5, 5, 5, 0.52);
-            backdrop-filter: blur(18px);
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .skills-overlay-panel {
-            position: relative;
-            width: min(960px, 100%);
-            padding: 28px;
-            border-radius: 34px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            background:
-                radial-gradient(circle at top right, rgba(255, 87, 34, 0.12), transparent 28%),
-                rgba(8, 8, 8, 0.78);
-            backdrop-filter: blur(24px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
-            transform: translateY(24px) scale(0.98);
-            transition: transform 0.35s ease;
-        }
-        .skills-overlay.active .skills-overlay-panel {
-            transform: translateY(0) scale(1);
-        }
-        .skills-overlay-top {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 24px;
-            margin-bottom: 24px;
-            padding-right: 72px;
-        }
-        .skills-overlay-title {
-            font-size: clamp(1.8rem, 3vw, 2.8rem);
-            line-height: 1.05;
-            letter-spacing: -0.04em;
-        }
-        .skills-overlay-copy {
-            color: var(--text-secondary);
-            margin-top: 14px;
-            max-width: 56ch;
-            line-height: 1.7;
-        }
-        .skills-overlay-close {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            padding: 0;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-        .skills-overlay-close svg {
-            width: 18px;
-            height: 18px;
-            display: block;
-        }
-        .skills-overlay-close:hover {
-            border-color: var(--accent-primary);
-            transform: rotate(90deg);
-        }
-        @media (max-width: 768px) {
-            .skills-grid {
-                margin-bottom: 32px;
-            }
-            .skills-card {
-                min-height: auto;
-                gap: 14px;
-            }
-            .skills-card-copy {
-                font-size: 0.94rem;
-                line-height: 1.65;
-            }
-            .skills-overlay {
-                align-items: flex-start;
-                padding: 16px;
-                overflow-y: auto;
-            }
-            .skills-overlay-panel {
-                padding: 22px 18px 18px;
-                border-radius: 24px;
-                max-height: calc(100svh - 32px);
-                overflow-y: auto;
-            }
-            .skills-overlay-top {
-                align-items: flex-start;
-                padding-right: 58px;
-                margin-bottom: 18px;
-            }
-            .skills-overlay-title {
-                font-size: clamp(1.4rem, 8vw, 2rem);
-            }
-            .skills-overlay-copy {
-                margin-top: 10px;
-                font-size: 0.94rem;
-                line-height: 1.6;
-            }
-            .skills-overlay-close {
-                top: 16px;
-                right: 16px;
-                width: 40px;
-                height: 40px;
-            }
-            #skills-canvas {
-                height: 260px;
-                border-radius: 24px;
-            }
-        }
-        @media (max-width: 560px) {
-            .skills-card h3 {
-                font-size: 1.22rem;
-            }
-            .skills-card-copy {
-                font-size: 0.9rem;
-            }
-            .skills-overlay {
-                padding: 12px;
-            }
-            .skills-overlay-panel {
-                padding: 18px 14px 14px;
-                border-radius: 20px;
-                max-height: calc(100svh - 24px);
-            }
-            .skills-overlay-top {
-                gap: 16px;
-                padding-right: 50px;
-            }
-            .skills-overlay-close {
-                width: 36px;
-                height: 36px;
-            }
-            .skills-overlay-close svg {
-                width: 16px;
-                height: 16px;
-            }
-            #skills-canvas {
-                height: 220px;
-            }
-        }
-    </style>
 </head>
+
 <body>
-    <nav>
-        <a href="./" class="logo" aria-label="Go to home page">MOHAMMED WASIF AHMED</a>
-        <div class="nav-links">
-            <a href="./">Home</a>
-            <a href="./about.html">About</a>
-            <a href="./projects.html">Projects</a>
-            <a href="./education.html">Education</a>
-            <a href="./skills.html" class="active">Skills</a>
-            <a href="./certifications.html">Certifications</a>
-            <a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Contact</a>
+    <header class="so-header">
+        <a href="./" class="so-brand" aria-label="Single Origin — home">
+            <span class="so-brand-dot" aria-hidden="true"></span>
+            <span class="so-brand-name">Single&nbsp;Origin</span>
+            <span class="so-brand-est">Est.&nbsp;2026</span>
+        </a>
+        <nav class="so-nav">
+            <div class="so-navlinks" id="so-navlinks" data-open="false">
+                <a href="./">The&nbsp;Label</a>
+                <a href="./about.html">Tasting&nbsp;Notes</a>
+                <a href="./projects.html">The&nbsp;Menu</a>
+                <a href="./education.html">Roast&nbsp;Curve</a>
+                <a href="./skills.html">Recipe</a>
+                <a href="./certifications.html">Passport</a>
+                <a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Order</a>
+            </div>
+            <div class="so-roast-toggle" data-roast-toggle title="Toggle roast" role="button" tabindex="0" aria-label="Toggle light or dark roast">
+                <span class="so-seg" data-seg="light">Light&nbsp;Roast</span>
+                <span class="so-seg" data-seg="dark">Dark&nbsp;Roast</span>
+            </div>
+            <button class="so-burger" id="so-burger" type="button" data-menu-toggle aria-label="Menu">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="so-section" aria-label="Skills — The Recipe Card">
+            <div class="so-section-head" data-reveal>
+                <span class="so-eyebrow">The&nbsp;Recipe</span>
+                <h2 class="so-h2">Skills</h2>
+            </div>
+
+            <div class="so-card so-recipe-card" data-reveal>
+                <div class="so-recipe-params">
+                    <div><div class="so-recipe-param-key">Method</div><div class="so-recipe-param-val">V60</div></div>
+                    <div><div class="so-recipe-param-key">Dose</div><div class="so-recipe-param-val">18 g</div></div>
+                    <div><div class="so-recipe-param-key">Ratio</div><div class="so-recipe-param-val">1:16</div></div>
+                    <div><div class="so-recipe-param-key">Grind</div><div class="so-recipe-param-val">Medium-fine</div></div>
+                    <div><div class="so-recipe-param-key">Time</div><div class="so-recipe-param-val">2:30</div></div>
+                </div>
+
+                <div class="so-recipe-step">
+                    <div class="so-recipe-step-head">
+                        <div class="so-recipe-step-label">Step 01 · Dose</div>
+                        <div class="so-recipe-step-name">Languages</div>
+                    </div>
+                    <div class="so-chips">
+                        <span class="so-chip">Python</span>
+                        <span class="so-chip">TypeScript</span>
+                        <span class="so-chip">JavaScript</span>
+                        <span class="so-chip">Rust</span>
+                        <span class="so-chip">Java</span>
+                        <span class="so-chip">C++</span>
+                    </div>
+                </div>
+
+                <div class="so-recipe-step">
+                    <div class="so-recipe-step-head">
+                        <div class="so-recipe-step-label">Step 02 · Ratio</div>
+                        <div class="so-recipe-step-name">Frontend</div>
+                    </div>
+                    <div class="so-chips">
+                        <span class="so-chip">React</span>
+                        <span class="so-chip">Next.js</span>
+                        <span class="so-chip">Svelte</span>
+                        <span class="so-chip">HTML</span>
+                        <span class="so-chip">CSS</span>
+                        <span class="so-chip">GSAP</span>
+                    </div>
+                </div>
+
+                <div class="so-recipe-step">
+                    <div class="so-recipe-step-head">
+                        <div class="so-recipe-step-label">Step 03 · Grind</div>
+                        <div class="so-recipe-step-name">Backend &amp; Data</div>
+                    </div>
+                    <div class="so-chips">
+                        <span class="so-chip">Node.js</span>
+                        <span class="so-chip">Express</span>
+                        <span class="so-chip">SQL</span>
+                        <span class="so-chip">MongoDB</span>
+                        <span class="so-chip">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="so-recipe-step">
+                    <div class="so-recipe-step-head">
+                        <div class="so-recipe-step-label">Step 04 · Time</div>
+                        <div class="so-recipe-step-name">Tools &amp; Platforms</div>
+                    </div>
+                    <div class="so-chips">
+                        <span class="so-chip">Git</span>
+                        <span class="so-chip">Docker</span>
+                        <span class="so-chip">Tauri</span>
+                        <span class="so-chip">Vite</span>
+                        <span class="so-chip">PyQt5</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- POUR DIVIDER -->
+        <div class="so-pour" data-reveal>
+            <div class="so-pour-label">
+                <span>The&nbsp;Passport</span><span>Certifications&nbsp;↓</span>
+            </div>
+            <div class="so-pour-track">
+                <div class="so-pour-line" data-pour></div>
+                <span class="so-pour-ring"></span>
+            </div>
         </div>
-    </nav>
-
-    <main class="container">
-        <canvas id="hero-canvas" class="live-bg-canvas"></canvas>
-        <header class="section-header reveal">
-            <h2>Skills &amp; Tools</h2>
-            <p>The stack behind my work across interfaces, AI-powered workflows, backend systems, and the tools I rely on to ship with clarity.</p>
-        </header>
-
-        <div class="bento-grid skills-grid">
-            <div class="bento-card reveal skills-card" data-skills-category="Focus Areas" tabindex="0" role="button" style="grid-column: span 2;">
-                <div>
-                    <h3>Focus Areas</h3>
-                </div>
-                <p class="skills-card-copy">AI tooling, automation workflows, product interfaces, and distributed systems thinking.</p>
-            </div>
-            <div class="bento-card reveal skills-card" data-skills-category="Languages" tabindex="0" role="button">
-                <div>
-                    <h3>Languages</h3>
-                </div>
-                <p class="skills-card-copy">Python, TypeScript, JavaScript, Rust, Java, and C++.</p>
-            </div>
-            <div class="bento-card reveal skills-card" data-skills-category="Frontend" tabindex="0" role="button">
-                <div>
-                    <h3>Frontend</h3>
-                </div>
-                <p class="skills-card-copy">React, Next.js, Svelte, HTML, CSS, and motion with GSAP.</p>
-            </div>
-            <div class="bento-card reveal skills-card" data-skills-category="Backend &amp; Data" tabindex="0" role="button">
-                <div>
-                    <h3>Backend &amp; Data</h3>
-                </div>
-                <p class="skills-card-copy">Node.js, Express, SQL, MongoDB, REST APIs, and data workflows.</p>
-            </div>
-            <div class="bento-card reveal skills-card" data-skills-category="Tools &amp; Platforms" tabindex="0" role="button">
-                <div>
-                    <h3>Tools &amp; Platforms</h3>
-                </div>
-                <p class="skills-card-copy">Git, Docker, Tauri, Vite, PyQt5, and desktop-to-web tooling.</p>
-            </div>
-        </div>
-
-        <footer class="reveal" style="padding: 40px 0;">
-            <div>© 2026 Wasif. All rights reserved.</div>
-            <ul class="social-list">
-                <li><a href="./">Home</a></li>
-                <li><a href="./projects.html">Projects</a></li>
-                <li><a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Contact</a></li>
-            </ul>
-        </footer>
     </main>
 
-    <div class="skills-overlay" id="skills-overlay" aria-hidden="true">
-        <div class="skills-overlay-panel">
-            <div class="skills-overlay-top">
-                <div>
-                    <h3 class="skills-overlay-title" id="skills-overlay-title">Skills</h3>
-                    <p class="skills-overlay-copy" id="skills-overlay-copy"></p>
-                </div>
-                <button class="skills-overlay-close" id="skills-overlay-close" type="button" aria-label="Close skills view">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
-                        <path d="M6 6L18 18"></path>
-                        <path d="M18 6L6 18"></path>
-                    </svg>
-                </button>
-            </div>
-            <canvas id="skills-canvas"></canvas>
+    <footer class="so-footer">
+        <span>© 2026 Wasif.</span>
+        <div class="so-footer-links">
+            <a href="https://github.com/Praisser" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/praisser" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="#contact-modal" data-contact-modal>Order</a>
         </div>
-    </div>
+        <span>Designed &amp; brewed in Hyderabad.</span>
+    </footer>
 
-    <script type="module" src="/src/skills.js"></script>
     <script type="module" src="/src/main.js"></script>
 </body>
+
 </html>

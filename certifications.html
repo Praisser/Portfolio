@@ -1,279 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Mohammed Wasif Ahmed">
-    <title>Certifications | Mohammed Wasif Ahmed</title>
+    <title>The Passport | Mohammed Wasif Ahmed</title>
+    <script>
+        try { document.documentElement.dataset.roast = localStorage.getItem('so-roast') || 'light'; }
+        catch (e) { document.documentElement.dataset.roast = 'light'; }
+    </script>
     <link rel="stylesheet" href="/src/style.css">
-    <style>
-        .certifications-header {
-            max-width: 760px;
-            margin-bottom: 36px;
-        }
-        .certifications-game {
-            max-width: 920px;
-            margin: 0 auto;
-        }
-        .certifications-game-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 18px;
-        }
-        .certifications-game-label {
-            color: var(--accent-secondary);
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-        .certifications-game-status {
-            color: var(--text-secondary);
-            font-size: 0.92rem;
-        }
-        .certifications-puzzle {
-            position: relative;
-            width: min(100%, 760px);
-            margin: 0 auto;
-            aspect-ratio: 1;
-            background: transparent;
-            border: none;
-            box-shadow: none;
-            overflow: visible;
-        }
-        .cert-segment {
-            position: absolute;
-            inset: 0;
-            border: none;
-            padding: 0;
-            background:
-                linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.018));
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-            cursor: pointer;
-            transition: filter 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-        }
-        .cert-segment:hover,
-        .cert-segment:focus-visible {
-            filter: brightness(1.08);
-            box-shadow:
-                inset 0 0 0 1px rgba(255, 174, 143, 0.42),
-                inset 0 0 28px rgba(255, 255, 255, 0.03);
-            outline: none;
-        }
-        .cert-segment.is-revealed {
-            background:
-                linear-gradient(180deg, var(--segment-top), var(--segment-bottom));
-            box-shadow:
-                inset 0 0 0 1px var(--segment-border),
-                inset 0 0 40px rgba(255, 255, 255, 0.02);
-            cursor: default;
-        }
-        .cert-segment__content {
-            position: absolute;
-            left: var(--content-x);
-            top: var(--content-y);
-            transform: translate(-50%, -50%);
-            width: min(160px, 21%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 6px;
-            padding: 0 2px;
-            text-align: center;
-            pointer-events: auto;
-        }
-        .cert-segment__title {
-            font-size: clamp(0.82rem, 1.35vw, 1rem);
-            font-weight: 700;
-            line-height: 1.18;
-            letter-spacing: -0.02em;
-        }
-        .cert-segment__issuer {
-            color: rgba(255, 255, 255, 0.72);
-            font-size: 0.74rem;
-            line-height: 1.35;
-        }
-        .cert-segment__verify {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 30px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-primary);
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition-smooth);
-        }
-        .cert-segment__verify:hover {
-            border-color: rgba(255, 255, 255, 0.28);
-            background: rgba(255, 255, 255, 0.12);
-        }
-        .cert-puzzle-hub {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            clip-path: polygon(var(--hub-points));
-            background:
-                radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 55%),
-                rgba(8, 8, 8, 0.88);
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-        }
-        .cert-puzzle-hub.is-complete {
-            background:
-                radial-gradient(circle at top left, rgba(255, 200, 164, 0.14), transparent 55%),
-                linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.025));
-        }
-        .cert-puzzle-hub__content {
-            width: min(176px, 24%);
-            text-align: center;
-        }
-        .cert-puzzle-hub__eyebrow {
-            color: var(--accent-secondary);
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-        }
-        .cert-puzzle-hub__title {
-            margin-top: 8px;
-            font-size: clamp(1rem, 2vw, 1.4rem);
-            font-weight: 700;
-            line-height: 1.12;
-            letter-spacing: -0.03em;
-        }
-        .cert-puzzle-hub__meta {
-            margin-top: 10px;
-            color: var(--text-secondary);
-            font-size: 0.8rem;
-            line-height: 1.45;
-        }
-        @media (max-width: 768px) {
-            .certifications-header {
-                margin-bottom: 28px;
-            }
-            .certifications-game-meta {
-                flex-direction: column;
-                align-items: flex-start;
-                margin-bottom: 14px;
-            }
-            .cert-segment__content {
-                width: min(108px, 22.5%);
-                gap: 4px;
-            }
-            .cert-segment__title {
-                font-size: 0.68rem;
-            }
-            .cert-segment__issuer {
-                font-size: 0.6rem;
-                line-height: 1.28;
-            }
-            .cert-segment__verify {
-                min-height: 24px;
-                padding: 4px 8px;
-                font-size: 0.6rem;
-            }
-            .cert-puzzle-hub__content {
-                width: min(114px, 24%);
-            }
-            .cert-puzzle-hub__eyebrow {
-                font-size: 0.58rem;
-            }
-            .cert-puzzle-hub__title {
-                margin-top: 6px;
-                font-size: 0.86rem;
-            }
-            .cert-puzzle-hub__meta {
-                margin-top: 8px;
-                font-size: 0.62rem;
-            }
-        }
-        @media (max-width: 560px) {
-            .certifications-game {
-                max-width: none;
-            }
-            .certifications-puzzle {
-                width: min(100%, 380px);
-            }
-            .cert-segment__content {
-                width: min(84px, 23.5%);
-                gap: 3px;
-            }
-            .cert-segment__title {
-                font-size: 0.6rem;
-                line-height: 1.08;
-            }
-            .cert-segment__issuer {
-                font-size: 0.52rem;
-            }
-            .cert-segment__verify {
-                min-height: 22px;
-                padding: 4px 7px;
-                font-size: 0.55rem;
-            }
-            .cert-puzzle-hub__content {
-                width: min(90px, 24%);
-            }
-            .cert-puzzle-hub__eyebrow {
-                font-size: 0.52rem;
-            }
-            .cert-puzzle-hub__title {
-                font-size: 0.76rem;
-            }
-            .cert-puzzle-hub__meta {
-                font-size: 0.56rem;
-                line-height: 1.35;
-            }
-        }
-    </style>
 </head>
+
 <body>
-    <nav>
-        <a href="./" class="logo" aria-label="Go to home page">MOHAMMED WASIF AHMED</a>
-        <div class="nav-links">
-            <a href="./">Home</a>
-            <a href="./about.html">About</a>
-            <a href="./projects.html">Projects</a>
-            <a href="./education.html">Education</a>
-            <a href="./skills.html">Skills</a>
-            <a href="./certifications.html" class="active">Certifications</a>
-            <a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Contact</a>
-        </div>
-    </nav>
-
-    <main class="container">
-        <canvas id="hero-canvas" class="live-bg-canvas"></canvas>
-        <header class="section-header reveal certifications-header">
-            <h2>Try Your Luck</h2>
-            <p>Certifications are hidden inside the puzzle. Click a segment to uncover one credential at a time and unlock the full board.</p>
-        </header>
-
-        <section class="certifications-game reveal" aria-labelledby="certifications-status">
-            <div class="certifications-game-meta">
-                <span class="certifications-game-label">Certification Puzzle</span>
-                <p id="certifications-status" class="certifications-game-status">0 / 7 unlocked</p>
+    <header class="so-header">
+        <a href="./" class="so-brand" aria-label="Single Origin — home">
+            <span class="so-brand-dot" aria-hidden="true"></span>
+            <span class="so-brand-name">Single&nbsp;Origin</span>
+            <span class="so-brand-est">Est.&nbsp;2026</span>
+        </a>
+        <nav class="so-nav">
+            <div class="so-navlinks" id="so-navlinks" data-open="false">
+                <a href="./">The&nbsp;Label</a>
+                <a href="./about.html">Tasting&nbsp;Notes</a>
+                <a href="./projects.html">The&nbsp;Menu</a>
+                <a href="./education.html">Roast&nbsp;Curve</a>
+                <a href="./skills.html">Recipe</a>
+                <a href="./certifications.html">Passport</a>
+                <a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Order</a>
             </div>
-            <div id="certifications-puzzle" class="certifications-puzzle"></div>
+            <div class="so-roast-toggle" data-roast-toggle title="Toggle roast" role="button" tabindex="0" aria-label="Toggle light or dark roast">
+                <span class="so-seg" data-seg="light">Light&nbsp;Roast</span>
+                <span class="so-seg" data-seg="dark">Dark&nbsp;Roast</span>
+            </div>
+            <button class="so-burger" id="so-burger" type="button" data-menu-toggle aria-label="Menu">☰</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="so-section" aria-label="Certifications — The Passport">
+            <div class="so-section-head" data-reveal>
+                <span class="so-eyebrow">The&nbsp;Passport</span>
+                <h2 class="so-h2">Certifications</h2>
+            </div>
+
+            <div class="so-passport-grid">
+                <a class="so-stamp-card" href="https://smartinterviews.in/certificate/6ad14a6a" target="_blank" rel="noopener noreferrer" data-reveal>
+                    <div class="so-stamp-seal" aria-hidden="true"><span>VERI<br>FIED</span></div>
+                    <div class="so-stamp-no">Stamp&nbsp;N°&nbsp;01</div>
+                    <h3 class="so-stamp-title">Smart Interviews — DSA</h3>
+                    <div class="so-stamp-issuer">Smart&nbsp;Interviews</div>
+                </a>
+
+                <a class="so-stamp-card" href="https://www.credly.com/badges/d2c96036-f5b7-40d7-9fed-708a7e790711/public_url" target="_blank" rel="noopener noreferrer" data-reveal>
+                    <div class="so-stamp-seal" aria-hidden="true"><span>VERI<br>FIED</span></div>
+                    <div class="so-stamp-no">Stamp&nbsp;N°&nbsp;02</div>
+                    <h3 class="so-stamp-title">Cloud Foundations</h3>
+                    <div class="so-stamp-issuer">AWS&nbsp;·&nbsp;Credly</div>
+                </a>
+
+                <a class="so-stamp-card" href="https://drive.google.com/file/d/1sLfxmw6amIsOVbzuzL-YO4zDjC4V_gUw/view?usp=drive_link" target="_blank" rel="noopener noreferrer" data-reveal>
+                    <div class="so-stamp-seal" aria-hidden="true"><span>VERI<br>FIED</span></div>
+                    <div class="so-stamp-no">Stamp&nbsp;N°&nbsp;03</div>
+                    <h3 class="so-stamp-title">AI-ML Virtual Internship</h3>
+                    <div class="so-stamp-issuer">Google</div>
+                </a>
+
+                <a class="so-stamp-card" href="https://coursera.org/share/60886494a687319f0f105beb6eb857a9" target="_blank" rel="noopener noreferrer" data-reveal>
+                    <div class="so-stamp-seal" aria-hidden="true"><span>VERI<br>FIED</span></div>
+                    <div class="so-stamp-no">Stamp&nbsp;N°&nbsp;04</div>
+                    <h3 class="so-stamp-title">Machine Learning Specialization</h3>
+                    <div class="so-stamp-issuer">Coursera</div>
+                </a>
+
+                <a class="so-stamp-card" href="https://coursera.org/share/30dc399ec624159944a40e3aabab5385" target="_blank" rel="noopener noreferrer" data-reveal>
+                    <div class="so-stamp-seal" aria-hidden="true"><span>VERI<br>FIED</span></div>
+                    <div class="so-stamp-no">Stamp&nbsp;N°&nbsp;05</div>
+                    <h3 class="so-stamp-title">TensorFlow Developer</h3>
+                    <div class="so-stamp-issuer">Coursera</div>
+                </a>
+            </div>
         </section>
 
-        <footer class="reveal" style="padding: 40px 0;">
-            <div>© 2026 Wasif. All rights reserved.</div>
-            <ul class="social-list">
-                <li><a href="./">Home</a></li>
-                <li><a href="./skills.html">Skills</a></li>
-                <li><a href="#contact-modal" data-contact-modal aria-haspopup="dialog">Contact</a></li>
-            </ul>
-        </footer>
+        <!-- POUR DIVIDER -->
+        <div class="so-pour" data-reveal>
+            <div class="so-pour-label">
+                <span>The&nbsp;Counter</span><span>Place&nbsp;an&nbsp;Order&nbsp;↗</span>
+            </div>
+            <div class="so-pour-track">
+                <div class="so-pour-line" data-pour></div>
+                <span class="so-pour-ring"></span>
+            </div>
+        </div>
     </main>
+
+    <footer class="so-footer">
+        <span>© 2026 Wasif.</span>
+        <div class="so-footer-links">
+            <a href="https://github.com/Praisser" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://linkedin.com/in/praisser" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="#contact-modal" data-contact-modal>Order</a>
+        </div>
+        <span>Designed &amp; brewed in Hyderabad.</span>
+    </footer>
 
     <script type="module" src="/src/main.js"></script>
 </body>
+
 </html>
